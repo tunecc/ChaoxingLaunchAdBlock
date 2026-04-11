@@ -1,0 +1,9 @@
+Package: com.tune.chaoxinglaunchadblock
+Name: ChaoxingLaunchAdBlock
+Version: 0.0.2
+Architecture: iphoneos-arm64
+Description: Block Chaoxing splash ad launch requests.
+Maintainer: tune
+Author: tune
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 15.0)
