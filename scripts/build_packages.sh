@@ -115,10 +115,11 @@ for scheme in $schemes; do
     unpack_dir="$(mktemp -d "${TMPDIR:-/tmp}/cxcheck.XXXXXX")"
     dpkg-deb -R "$out_deb" "$unpack_dir"
     cleanup_host_metadata "$unpack_dir"
-    # 修正包内常规文件权限为 root 可读 (644/755),避免宿主 600 权限进包
+    # 权限位修正(规范 §10.6): plist/控制 644, dylib/可执行 755, 目录 755;归属由 --root-owner-group 统一 root
     find "$unpack_dir" -type f -name '*.plist' -exec chmod 644 {} +
     find "$unpack_dir" -type f -name '*.dylib' -exec chmod 755 {} +
     find "$unpack_dir/DEBIAN" -type f -exec chmod 644 {} + 2>/dev/null || true
+    find "$unpack_dir" -type d -exec chmod 755 {} +
     rm -f "$out_deb"
     dpkg-deb -b --root-owner-group "$unpack_dir" "$out_deb"
     rm -rf "$unpack_dir"
