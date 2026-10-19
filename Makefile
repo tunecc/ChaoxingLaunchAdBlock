@@ -1,4 +1,4 @@
-export THEOS = /Users/tune/Develop/theos-roothide
+export THEOS = /opt/theos
 
 TARGET := iphone:clang:latest:15.0
 ARCHS = arm64 arm64e

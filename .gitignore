@@ -2,3 +2,5 @@
 .theos/
 roothide/
 rootless/
+out/
+.clang-cache/
